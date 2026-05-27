@@ -6,10 +6,20 @@ Lo que se hace es simular una solicitud personalizada por un usuario para pedir 
 detalles como numero telefónico, método de pago, tipo de viaje y algunos requisitos especificos del pedido.
 
 Estructura:
-Data.py - Contiene los datos que se utilizan en las pruebas, principalmente para escribir texto en formularios y validar textos en algunos elementos de la página.
-Pages.py - Contiene los localizadores y métodos que se utilizan en las pruebas.
-utilities.py - Contiene un script complejo que se utiliza para obtener el código de confirmación del formulario "Rellenar número telefónico".
-main.py - Contiene todas las suite de pruebas.
+<ul>
+  <li>
+    <strong>Data.py</strong> - Contiene los datos que se utilizan en las pruebas, principalmente para escribir texto en formularios y validar textos en algunos elementos de la página.
+  </li>
+  <li>
+    <strong>Pages.py</strong> - Contiene los localizadores y métodos que se utilizan en las pruebas.
+  </li>
+  <li>
+    <strong>utilities.py</strong> - Contiene un script complejo que se utiliza para obtener el código de confirmación del formulario "Rellenar número telefónico".
+  </li>
+  <li>
+    <strong>main.py</strong> - Contiene todas las suite de pruebas.
+  </li>
+</ul>
 
 Aqui esta la lista de casos de prueba:
 
@@ -45,3 +55,6 @@ La URL con la que se trabajo fue: https://cnt-43fafe03-ef9a-41ae-ad3f-851fc792d8
 Este proyecto se desarrollo con PyTest y Selnium con conceptos básicos de DOM, OOP y otros conceptos básicos de python.
 El IDE necesario para ejecutar el proyecto es PyCharm 2026.1.
 También se utilizaron comandos básicos de Git Bash para clonar y empujar (push) el proyecto desde y hacia GitHub.
+
+### 🎥 Video demostrativo
+<a href="https://drive.google.com/file/d/1dz41bkKlgTeJ7AzlENk1V2D265IlzkLK/view?usp=sharing">Urban Routes Automation</a>
