@@ -1,4 +1,7 @@
-Proyecto Automatización de App Urban Routes v2
+Proyecto Automatización de App Urban Routes
+
+### 🎥 Video demostrativo
+<a href="https://drive.google.com/file/d/1dz41bkKlgTeJ7AzlENk1V2D265IlzkLK/view?usp=sharing">Urban Routes Automation</a>
 
 Proyecto de bootcamp para automatizar pruebas basadas en la lista de comprobacion descrita en este archivo
 para la App de Urban Routes que es una app de solicitudes de taxis o autos para transportar pasajeros (similar a Uber).
@@ -55,6 +58,3 @@ La URL con la que se trabajo fue: https://cnt-43fafe03-ef9a-41ae-ad3f-851fc792d8
 Este proyecto se desarrollo con PyTest y Selnium con conceptos básicos de DOM, OOP y otros conceptos básicos de python.
 El IDE necesario para ejecutar el proyecto es PyCharm 2026.1.
 También se utilizaron comandos básicos de Git Bash para clonar y empujar (push) el proyecto desde y hacia GitHub.
-
-### 🎥 Video demostrativo
-<a href="https://drive.google.com/file/d/1dz41bkKlgTeJ7AzlENk1V2D265IlzkLK/view?usp=sharing">Urban Routes Automation</a>
