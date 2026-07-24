@@ -1,60 +1,70 @@
-Proyecto Automatización de App Urban Routes
+# Urban Routes App Automation Project
 
-### 🎥 Video demostrativo
+### 🎥 Demo Video
 <a href="https://drive.google.com/file/d/1dz41bkKlgTeJ7AzlENk1V2D265IlzkLK/view?usp=sharing">Urban Routes Automation</a>
 
-Proyecto de bootcamp para automatizar pruebas basadas en la lista de comprobacion descrita en este archivo
-para la App de Urban Routes que es una app de solicitudes de taxis o autos para transportar pasajeros (similar a Uber).
-Lo que se hace es simular una solicitud personalizada por un usuario para pedir un taxi de un punto A a un punto B con
-detalles como numero telefónico, método de pago, tipo de viaje y algunos requisitos especificos del pedido.
+Bootcamp project dedicated to automating end-to-end tests based on the checklist detailed below for the **Urban Routes App**—a ride-hailing application for requesting taxis and passenger transport (similar to Uber).  
+The project automates a customized ride request from point A to point B, covering user details such as phone number verification, payment method addition, tariff selection, and specific order requirements.
 
-Estructura:
+Key Achievements:
+<ul>
+  <li><strong>9 test cases created and automated</strong> according to the checklist below.</li>
+  <li><strong>100% test coverage achieved.</strong></li>
+  <li><strong>Execution time:</strong> Approximately 1 minute.</li>
+  <li><strong>Main risk identified:</strong> Missing requirements to define additional positive, negative, and exploratory test scenarios.</li>
+</ul>
+
+Project Structure:
 <ul>
   <li>
-    <strong>Data.py</strong> - Contiene los datos que se utilizan en las pruebas, principalmente para escribir texto en formularios y validar textos en algunos elementos de la página.
+    <strong>Data.py:</strong> Contains test data used across the suite, primarily for populating form inputs and validating UI element text.
   </li>
   <li>
-    <strong>Pages.py</strong> - Contiene los localizadores y métodos que se utilizan en las pruebas.
+    <strong>Pages.py:</strong> Contains the Page Object Model (POM) locators and interaction methods.
   </li>
   <li>
-    <strong>utilities.py</strong> - Contiene un script complejo que se utiliza para obtener el código de confirmación del formulario "Rellenar número telefónico".
+    <strong>utilities.py:</strong> Features a helper script designed to retrieve the SMS confirmation code for the "Add phone number" flow.
   </li>
   <li>
-    <strong>main.py</strong> - Contiene todas las suite de pruebas.
+    <strong>main.py:</strong> Contains the entire test suite execution logic.
   </li>
 </ul>
 
-Aqui esta la lista de casos de prueba:
+Here is the full test case matrix:
 
-### 📋 Matriz de Casos de Prueba - Urban Routes
+### 📋 Test Case Matrix - Urban Routes
 
-| Número | Nombre | Pre-condiciones | Pasos | Resultado Esperado |
+| # | Name | Preconditions | Steps | Expected Result |
 | :---: | :--- | :--- | :--- | :--- |
-| **1** | Configurar la dirección. | Inicializar el servidor | 1. Ingresar 'East 2nd Street, 601' en campo "Desde".<br>2. Ingresar '1300 1st St' en campo "Hasta".<br>3. Validar el texto del campo "Desde"<br>4. Validar el texto del campo "Hasta" | 3. El texto debe coincidir con el que se acaba de escribir en el campo.<br>4. El texto debe coincidir con el que se acaba de escribir en el campo. |
-| **2** | Seleccionar la tarifa Comfort. | Inicializar el servidor<br>Configurar la dirección. | 1. Click en botón "Pedir un taxi".<br>2. Seleccionar la tarifa "Comfort".<br>3. Validar la selección. | 3. La selección debe retornar un estado "True" |
-| **3** | Rellenar el número de teléfono. | Inicializar el servidor<br>Configurar la dirección.<br>Seleccionar la tarifa "Comfort" | 1. Click en campo "Número de teléfono".<br>2. Ingresar '+1 123 123 12 12' en el campo.<br>3. Validar dicho número previamente ingresado.<br>4. Click en "Siguiente".<br>5. Ingresar el código otorgado por el servidor.<br>6. Validar dicho código previamente ingresado.<br>7. Click en "confirmar". | 3. El texto debe coincidir con el que se acaba de escribir en el campo.<br>6. El texto debe coincidir con el que se acaba de escribir en el campo. |
-| **4** | Agregar una tarjeta de crédito. | Inicializar el servidor<br>Configurar la dirección.<br>Seleccionar la tarifa "Comfort" | 1. Click en "Método de pago".<br>2. Click en "Agregar tarjeta".<br>3. Ingresar '1234 5678 9100' en el campo del número.<br>4. Ingresar '111' en el campo del código.<br>5. Click fuera de los campos.<br>6. Validar texto en campo "Número de tarjeta".<br>7. Validar texto en campo "Código".<br>8. Click en "Agregar"<br>9. Click en "Cerrar". | 6. El texto debe coincidir con el que se acaba de escribir en el campo.<br>7. El texto debe coincidir con el que se acaba de escribir en el campo. |
-| **5** | Escribir un mensaje para el conductor. | Inicializar el servidor<br>Configurar la dirección.<br>Seleccionar la tarifa "Comfort" | 1. Ingresar 'Muéstrame el camino al museo' en el campo "Mensaje para el conductor".<br>2. Validar texto en el campo. | 2. El texto debe coincidir con el que se acaba de escribir en el campo. |
-| **6** | Pedir una manta y pañuelos. | Inicializar el servidor<br>Configurar la dirección.<br>Seleccionar la tarifa "Comfort" | 1. Click en "Requisitos del pedido".<br>2. Click en "Manta y pañuelos".<br>3. Validar la selección del switch. | 3. La selección debe retornar un estado "True" |
-| **7** | Pedir 2 helados. | Inicializar el servidor<br>Configurar la dirección.<br>Seleccionar la tarifa "Comfort" | 1. Click 2 veces en el botón "+" de Helado.<br>2. Validar la cantidad del contador. | 2. El contador debe contener "2". |
-| **8** | Aparece el modal para buscar un taxi. | Inicializar el servidor<br>Configurar la dirección.<br>Seleccionar la tarifa "Comfort".<br>Rellenar todos los campos requeridos. | 1. Validar que aparezca "Pedir un taxi" en el botón principal de la orden.<br>2. Click en el botón.<br>3. Validar que aparezca el popup. | 1. El texto debe coincidir después de completar todos los campos requeridos.<br>3. Debe aparecer un popup que diga "Buscando automóvil..." |
-| **9** | Esperar a que aparezca la información del conductor. | Inicializar el servidor<br>Configurar la dirección.<br>Seleccionar la tarifa "Comfort".<br>Rellenar todos los campos requeridos.<br>Pedir un taxi. | 1. Esperar a que se complete el tiempo de espera al buscar el automóvil.<br>2. Validar la información del conductor. | 2. Los elementos deben estar visibles en la ventana después de completarse el timer. |l.
+| **1** | Set up the address. | Initialize server | 1. Enter 'East 2nd Street, 601' in "From" field.<br>2. Enter '1300 1st St' in "To" field.<br>3. Validate text in "From" field.<br>4. Validate text in "To" field. | 3. The field text must match the input.<br>4. The field text must match the input. |
+| **2** | Select the Comfort tariff. | Initialize server<br>Set up address. | 1. Click "Order a taxi" button.<br>2. Select "Comfort" tariff.<br>3. Validate selection. | 3. The selection state must return "True". |
+| **3** | Fill in the phone number. | Initialize server<br>Set up address.<br>Select "Comfort" tariff | 1. Click "Phone number" field.<br>2. Enter '+1 123 123 12 12'.<br>3. Validate the entered phone number.<br>4. Click "Next".<br>5. Enter confirmation code provided by server.<br>6. Validate the entered code.<br>7. Click "Confirm". | 3. The field text must match the input.<br>6. The field text must match the input. |
+| **4** | Add a credit card. | Initialize server<br>Set up address.<br>Select "Comfort" tariff | 1. Click "Payment method".<br>2. Click "Add card".<br>3. Enter '1234 5678 9100' in card number field.<br>4. Enter '111' in CVV code field.<br>5. Click outside the input fields.<br>6. Validate text in "Card number" field.<br>7. Validate text in "Code" field.<br>8. Click "Add".<br>9. Click "Close". | 6. The field text must match the input.<br>7. The field text must match the input. |
+| **5** | Write a message for the driver. | Initialize server<br>Set up address.<br>Select "Comfort" tariff | 1. Enter 'Show me the way to the museum' in "Message for driver" field.<br>2. Validate text in field. | 2. The field text must match the input. |
+| **6** | Order a blanket and tissues. | Initialize server<br>Set up address.<br>Select "Comfort" tariff | 1. Click "Order requirements".<br>2. Toggle "Blanket and tissues".<br>3. Validate switch state. | 3. The switch state must return "True". |
+| **7** | Order 2 ice creams. | Initialize server<br>Set up address.<br>Select "Comfort" tariff | 1. Click "+" button on Ice Cream twice.<br>2. Validate counter value. | 2. Counter value must equal "2". |
+| **8** | Display taxi search modal. | Initialize server<br>Set up address.<br>Select "Comfort" tariff.<br>Fill in all required fields. | 1. Validate "Order a taxi" label on main action button.<br>2. Click button.<br>3. Validate popup appearance. | 1. Button label must update correctly after filling required fields.<br>3. Popup displaying "Car search..." must appear. |
+| **9** | Wait for driver information. | Initialize server<br>Set up address.<br>Select "Comfort" tariff.<br>Fill in all required fields.<br>Order a taxi. | 1. Wait for car search countdown/timer to finish.<br>2. Validate driver details display. | 2. Driver details modal elements must be visible once the timer completes. |
 
-Pre-condiciones para correr el proyecto.
-1. Hay que tener previamente configurada el interprete en Pycharm e instalado pytest y selenium para poder utilizar las librerías.
-Estas son las versiones que se necesitan para este proyecto:
-PyTest 7.4.4 (o posterior)
-Selenium 4.11.2 (o posterior)
+### 🛠️ Prerequisites & Setup
 
-2. Hay que actualizar la ruta del servidor en el archivo "data.py" en la variable "urban_routes_url" ya que el proyecto funciona con un servidor temporal.
+1. **Environment Setup:**  
+   Ensure your Python interpreter is configured in PyCharm with `pytest` and `selenium` installed. Recommended dependency versions:
+   * **PyTest:** `7.4.4` or higher
+   * **Selenium:** `4.11.2` or higher
 
-PARA EJECUTARLO:
-Una vez instalado todo lo requerido, simplemente vaya al archivo "main.py" y haga click en simbolo de "flecha verde"
-que aparece en "class TestUrbanRoutes" para ejecutar todas las pruebas.
-Si se quiere ejecutar pruebas en especifico, hay que seguir las precondiciones de la tabla descrita previamente.
+2. **Server Configuration:**  
+   Update the temporary server URL in `data.py` under the `urban_routes_url` variable prior to execution.
 
-La URL con la que se trabajo fue: https://cnt-43fafe03-ef9a-41ae-ad3f-851fc792d8c8.containerhub.tripleten-services.com/?lng=es
+### 🚀 How to Run
 
-Este proyecto se desarrollo con PyTest y Selnium con conceptos básicos de DOM, OOP y otros conceptos básicos de python.
-El IDE necesario para ejecutar el proyecto es PyCharm 2026.1.
-También se utilizaron comandos básicos de Git Bash para clonar y empujar (push) el proyecto desde y hacia GitHub.
+1. Open the project in **PyCharm 2026.1**.
+2. Navigate to `main.py`.
+3. Click the **green play button** next to `class TestUrbanRoutes` to run all test cases sequentially.
+4. *Note: If running individual test methods, ensure pre-conditions listed in the test matrix are met.*
+
+*Target application URL used during development:*  
+`https://cnt-43fafe03-ef9a-41ae-ad3f-851fc792d8c8.containerhub.tripleten-services.com/?lng=es`
+
+---
+*Built with **PyTest** and **Selenium WebDriver** using **Object-Oriented Programming (OOP)**, **Page Object Model (POM)** pattern, and DOM manipulation. Version control managed via **Git Bash** and **GitHub**.*
